@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARUNACHALAM A/L THILLAI | Digital Profile & Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b0f19;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+    .font-handwriting {
+      font-family: 'Caveat', cursive;
+    }
+    .font-serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Clipboard 3D Perspective */
+    .clipboard-perspective {
+      perspective: 1200px;
+    }
+    .clipboard-card {
+      transform-style: preserve-3d;
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+      box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(217, 119, 6, 0.15);
+    }
+
+    /* Dynamic Proximity Word Zoom */
+    .word-lens {
+      display: inline-block;
+      transition: transform 0.18s ease, color 0.18s ease, text-shadow 0.18s ease;
+      cursor: crosshair;
+      border-radius: 4px;
+      padding: 0 2px;
+    }
+    .word-lens:hover {
+      transform: scale(1.35) translateY(-2px);
+      color: #1e3a8a !important;
+      text-shadow: 0 4px 12px rgba(30, 58, 138, 0.35);
+      background-color: #fef08a;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Polaroid vintage card style */
+    .polaroid-frame {
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .polaroid-frame:hover {
+      transform: scale(1.06) rotate(0deg) !important;
+      z-index: 30;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 25px rgba(234, 179, 8, 0.3);
+    }
+
+    /* Yellow sticky notes */
+    .sticky-note {
+      box-shadow: 4px 10px 25px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease;
+    }
+    .sticky-note:hover {
+      transform: scale(1.04) rotate(0deg) !important;
+    }
+
+    /* Textured Green Banner */
+    .green-textured-banner {
+      background: linear-gradient(135deg, #15803d 0%, #166534 50%, #14532d 100%);
+      box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.2), inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Print Formatting for Clean PDF Generation */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #resumePaper, #resumePaper * {
+        visibility: visible;
+      }
+      #resumePaper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px !important;
+        box-shadow: none !important;
+        background: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-400 selection:text-black">
+
+  <!-- ==================== VISITOR PURPOSE MODAL ==================== -->
+  <div id="purposeModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-opacity duration-300">
+    <div class="relative w-full max-w-lg rounded-3xl border border-white/20 bg-gradient-to-b from-slate-900 to-slate-950 p-8 shadow-2xl">
+      <div class="mb-6 flex items-center gap-3">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/20 text-amber-400 border border-amber-400/30">
+          <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold tracking-tight text-white">Welcome, honored visitor!</h2>
+          <p class="text-xs text-slate-400">Please personalize your interactive tour of this portfolio.</p>
+        </div>
+      </div>
+
+      <form id="purposeForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">1. Who are you?</label>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorType" value="Recruiter / HR" checked class="accent-amber-400">
+              <span>Recruiter / HR</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorType" value="Engineering Lead" class="accent-amber-400">
+              <span>Tech Lead / Dev</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorType" value="Collaborator / Peer" class="accent-amber-400">
+              <span>Collaborator</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorType" value="Friend / Explorer" class="accent-amber-400">
+              <span>Guest / Explorer</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">2. What is your viewing purpose?</label>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorGoal" value="Hiring & Evaluation" checked class="accent-amber-400">
+              <span>Hiring Assessment</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorGoal" value="Tech Review" class="accent-amber-400">
+              <span>TAGMA Project Review</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorGoal" value="Resume Verification" class="accent-amber-400">
+              <span>Resume Deep-Dive</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 hover:border-amber-400/60 cursor-pointer transition">
+              <input type="radio" name="visitorGoal" value="Casual Tour" class="accent-amber-400">
+              <span>Photo Wall & Showcase</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full mt-4 flex items-center justify-center gap-2 rounded-2xl bg-amber-400 py-3.5 text-sm font-bold text-slate-950 hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">
+          <span>Enter Arunachalam's Portfolio</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== TOP NAVIGATION: DAY DAY DAY TABS ==================== -->
+  <header class="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-white/10 py-3 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      <!-- Title & Live Status -->
+      <div class="flex items-center gap-3">
+        <div class="h-3 w-3 rounded-full bg-emerald-400 animate-ping"></div>
+        <span class="text-sm font-extrabold tracking-wide uppercase text-white">ARUNACHALAM A/L THILLAI</span>
+        <span id="visitorBadge" class="hidden md:inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 text-[11px] text-amber-300">
+          <i data-lucide="user-check" class="w-3 h-3"></i>
+          <span id="visitorText">Recruiter Mode</span>
+        </span>
+      </div>
+
+      <!-- DAY TABS (From your drawn wireframe header) -->
+      <nav class="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 md:pb-0">
+        <button onclick="scrollToSection('heroSection')" class="day-tab px-3.5 py-1.5 rounded-xl border-2 border-slate-700 bg-slate-900 text-xs font-black tracking-wider uppercase hover:border-amber-400 hover:text-amber-400 transition hover:-translate-y-0.5 shadow-sm">
+          DAY 1 <span class="hidden lg:inline text-[10px] font-normal opacity-70">Bio</span>
+        </button>
+        <button onclick="scrollToSection('resumeSection')" class="day-tab px-3.5 py-1.5 rounded-xl border-2 border-slate-700 bg-slate-900 text-xs font-black tracking-wider uppercase hover:border-amber-400 hover:text-amber-400 transition hover:-translate-y-0.5 shadow-sm">
+          DAY 2 <span class="hidden lg:inline text-[10px] font-normal opacity-70">Resume</span>
+        </button>
+        <button onclick="openModal('workModal')" class="day-tab px-3.5 py-1.5 rounded-xl border-2 border-slate-700 bg-slate-900 text-xs font-black tracking-wider uppercase hover:border-amber-400 hover:text-amber-400 transition hover:-translate-y-0.5 shadow-sm">
+          DAY 3 <span class="hidden lg:inline text-[10px] font-normal opacity-70">ICBC Exp</span>
+        </button>
+        <button onclick="openModal('kokoModal')" class="day-tab px-3.5 py-1.5 rounded-xl border-2 border-slate-700 bg-slate-900 text-xs font-black tracking-wider uppercase hover:border-amber-400 hover:text-amber-400 transition hover:-translate-y-0.5 shadow-sm">
+          DAY 4 <span class="hidden lg:inline text-[10px] font-normal opacity-70">Ko-Kurikulum</span>
+        </button>
+        <button onclick="openModal('skillsModal')" class="day-tab px-3.5 py-1.5 rounded-xl border-2 border-slate-700 bg-slate-900 text-xs font-black tracking-wider uppercase hover:border-amber-400 hover:text-amber-400 transition hover:-translate-y-0.5 shadow-sm">
+          DAY 5 <span class="hidden lg:inline text-[10px] font-normal opacity-70">TAGMA / Skills</span>
+        </button>
+        <button onclick="scrollToSection('gallerySection')" class="day-tab px-3.5 py-1.5 rounded-xl border-2 border-slate-700 bg-slate-900 text-xs font-black tracking-wider uppercase hover:border-amber-400 hover:text-amber-400 transition hover:-translate-y-0.5 shadow-sm">
+          DAY 6 <span class="hidden lg:inline text-[10px] font-normal opacity-70">Moments</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-16">
+
+    <!-- ==================== SECTION 1: WOODEN CLIPBOARD RESUME (PAPER IN MOTION) ==================== -->
+    <section id="resumeSection" class="clipboard-perspective flex flex-col items-center">
+      <div class="mb-4 text-center">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 border border-amber-500/20">
+          <i data-lucide="mouse-pointer-2" class="w-3.5 h-3.5"></i>
+          3D Tactile Resume • Proximity Word Magnifier Enabled
+        </span>
+        <p class="text-xs text-slate-400 mt-1">Move your cursor across words to magnify them. Click any highlighted segment for deep-dive records.</p>
+      </div>
+
+      <!-- Wooden Clipboard Element -->
+      <div id="clipboardBoard" class="clipboard-card relative w-full max-w-4xl rounded-3xl p-6 sm:p-10 transition-transform duration-100" style="background: linear-gradient(145deg, #78350f, #451a03); border: 8px solid #92400e;">
+        
+        <!-- Metallic Clamp on Top with Download Button -->
+        <div class="absolute -top-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
+          <div class="w-48 h-8 rounded-t-xl bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 shadow-md border-t border-white/50 flex items-center justify-center">
+            <div class="w-16 h-2 rounded-full bg-slate-600/80"></div>
+          </div>
+          <div class="w-56 h-7 rounded-b-xl bg-gradient-to-b from-slate-400 to-slate-600 shadow-xl border border-slate-400/40 flex items-center justify-center gap-4">
+            <div class="w-3 h-3 rounded-full bg-slate-800 shadow-inner"></div>
+            <div class="w-12 h-1 bg-slate-700 rounded-full"></div>
+            <div class="w-3 h-3 rounded-full bg-slate-800 shadow-inner"></div>
+          </div>
+        </div>
+
+        <!-- Download Resume PDF Bar -->
+        <div class="flex justify-end mb-4 pt-4 no-print">
+          <button onclick="downloadResumePDF()" class="group flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-slate-950 shadow-lg shadow-amber-500/30 hover:scale-105 active:scale-95 transition border border-amber-300">
+            <i data-lucide="download" class="w-4 h-4 transition-transform group-hover:-translate-y-0.5"></i>
+            <span>Download Resume PDF</span>
+          </button>
+        </div>
+
+        <!-- The White Paper Resume Sheet -->
+        <div id="resumePaper" class="relative rounded-xl bg-[#fafaf9] p-6 sm:p-10 text-slate-900 shadow-2xl border border-slate-300/80">
+          
+          <!-- Executive Pen Accessory on the side -->
+          <div class="absolute -right-4 top-16 hidden lg:block transform rotate-12 drop-shadow-2xl pointer-events-none">
+            <div class="w-4 h-64 rounded-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-950 border border-amber-400/80 flex flex-col items-center justify-between py-2 shadow-2xl">
+              <div class="w-2 h-6 bg-amber-400 rounded-t-sm"></div>
+              <div class="w-1.5 h-12 bg-amber-300/60 rounded"></div>
+              <div class="w-2.5 h-6 bg-slate-900 rounded-b-full"></div>
+            </div>
+          </div>
+
+          <!-- RESUME HEADER (Matched to Resume v2) -->
+          <header class="border-b-2 border-slate-800 pb-5 mb-5 flex flex-col sm:flex-row items-center gap-6">
+            <!-- Photo 1: Profile Portrait -->
+            <div class="relative group">
+              <img src="https://drive.google.com/thumbnail?id=1KHtOecHB55Z97z34J6UMdTzlT0BZs8rC&sz=w1000" alt="ARUNACHALAM A/L THILLAI" class="w-24 h-28 object-cover rounded-lg border-2 border-slate-800 shadow-md">
+              <span class="absolute -bottom-2 -right-2 bg-amber-400 text-slate-950 text-[9px] font-black uppercase px-1.5 py-0.5 rounded shadow">ID</span>
+            </div>
+
+            <div class="text-center sm:text-left flex-1">
+              <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 font-serif-title">
+                ARUNACHALAM A/L THILLAI
+              </h1>
+              <p class="text-xs font-semibold text-slate-700 mt-1">
+                NO 7 JALAN PUTERA INDAH 4/6 TAMAN PUTERA INDAH, MUAR, JOHOR
+              </p>
+              <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1 text-xs text-slate-700 mt-2">
+                <span class="flex items-center gap-1 font-semibold">
+                  <i data-lucide="phone" class="w-3.5 h-3.5 text-blue-700"></i>
+                  016-8427935
+                </span>
+                <span class="flex items-center gap-1 font-semibold">
+                  <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-700"></i>
+                  tarunachalam422@gmail.com
+                </span>
+                <a href="https://www.linkedin.com/in/arunachalam-thillai-24b48b255" target="_blank" class="flex items-center gap-1 text-blue-700 hover:underline font-bold">
+                  <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+                  linkedin.com/in/arunachalam-thillai-24b48b255
+                </a>
+              </div>
+            </div>
+          </header>
+
+          <!-- SUMMARY -->
+          <div class="mb-5 text-justify text-xs leading-relaxed text-slate-800">
+            <h2 class="text-xs font-black uppercase tracking-wider text-slate-950 border-b border-slate-300 pb-1 mb-1.5">Summary</h2>
+            <p id="summaryText">
+              Information Technology (Business Computing) undergraduate specialising in software development, IT support, cloud computing, database systems, and digital solutions. Experienced in developing web-based applications, managing IT operations, delivering technology education, and applying technical skills through industry and academic projects.
+            </p>
+          </div>
+
+          <!-- WORK EXPERIENCE (Clickable Segment) -->
+          <div class="mb-5">
+            <div class="flex items-center justify-between border-b border-slate-300 pb-1 mb-2">
+              <h2 class="text-xs font-black uppercase tracking-wider text-slate-950">Work Experience</h2>
+              <button onclick="openModal('workModal')" class="text-[11px] font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1 group no-print">
+                <span>View Full Evidence</span>
+                <i data-lucide="external-link" class="w-3 h-3 transition-transform group-hover:translate-x-0.5"></i>
+              </button>
+            </div>
+
+            <!-- Job 1: ICBC -->
+            <div class="mb-3 text-xs">
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>IT Department Intern | Industrial & Commercial Bank of China (ICBC) Malaysia Berhad</span>
+                <span class="text-[11px] text-slate-600">March 2026 – August 2026</span>
+              </div>
+              <ul class="list-disc list-outside ml-4 mt-1 text-slate-700 space-y-1">
+                <li class="lens-target">Performed daily IT operational support activities including hardware troubleshooting, system health checks, software updates, and technical maintenance tasks to improve workplace technology readiness.</li>
+                <li class="lens-target">Collaborated with IT team members to document 20+ device specifications, asset details, and technical records while assisting user support requests and maintaining internal IT documentation standards.</li>
+              </ul>
+            </div>
+
+            <!-- Job 2: Avo Bridge -->
+            <div class="mb-3 text-xs">
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>Part Time Computer Science & Language Tutor | Avo Bridge Academy</span>
+                <span class="text-[11px] text-slate-600">Feb 2026 – Present</span>
+              </div>
+              <ul class="list-disc list-outside ml-4 mt-1 text-slate-700 space-y-1">
+                <li class="lens-target">Delivered Computer Science lessons to nearly 30 students, including 5 IT learners, covering programming fundamentals, coding logic, and software tools.</li>
+                <li class="lens-target">Taught Mandarin to around 25 students through speaking, listening, and vocabulary activities.</li>
+              </ul>
+            </div>
+
+            <!-- Job 3: Car Rental -->
+            <div class="text-xs">
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>Vehicle Maintenance Technician (Part Time) | Car Rental Operations</span>
+                <span class="text-[11px] text-slate-600">2024 – 2026</span>
+              </div>
+              <ul class="list-disc list-outside ml-4 mt-1 text-slate-700 space-y-1">
+                <li class="lens-target">Performed routine inspections, mechanical diagnostics, and preventive maintenance for 20+ rental vehicles to maintain safety and operational readiness.</li>
+                <li class="lens-target">Managed maintenance schedules for 20+ rental vehicles, identifying mechanical issues and coordinating repairs to minimise downtime and maintain vehicle availability.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PROJECTS & LEADERSHIP EXPERIENCE (Clickable Segment) -->
+          <div class="mb-5">
+            <div class="flex items-center justify-between border-b border-slate-300 pb-1 mb-2">
+              <h2 class="text-xs font-black uppercase tracking-wider text-slate-950">Projects & Leadership Experience</h2>
+              <button onclick="openModal('kokoModal')" class="text-[11px] font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1 group no-print">
+                <span>View Ko-Kurikulum</span>
+                <i data-lucide="external-link" class="w-3 h-3 transition-transform group-hover:translate-x-0.5"></i>
+              </button>
+            </div>
+
+            <!-- TAGMA FYP -->
+            <div class="mb-3 text-xs">
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>Final Year Project (TAGMA): Universal Tagging System | Universiti Malaysia Sabah</span>
+                <span class="text-[11px] text-slate-600">2025 – 2026</span>
+              </div>
+              <ul class="list-disc list-outside ml-4 mt-1 text-slate-700 space-y-1">
+                <li class="lens-target">Developed TAGMA, a web-based identification system with 7+ modules using visual tags for personal belongings.</li>
+                <li class="lens-target">Implemented 7+ features including authentication, tagging, OCR scanning, AR identification, reporting, and location tracking.</li>
+                <li class="lens-target">Managed full SDLC from requirement analysis to implementation and usability testing with 25 participants.</li>
+              </ul>
+            </div>
+
+            <!-- Academic Project -->
+            <div class="mb-3 text-xs">
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>Project Management & Communication Analysis (Academic Project)</span>
+                <span class="text-[11px] text-slate-600">2024 – 2025</span>
+              </div>
+              <ul class="list-disc list-outside ml-4 mt-1 text-slate-700 space-y-1">
+                <li class="lens-target">Coordinated 10+ project tasks through planning, scheduling, and documentation activities to support successful delivery.</li>
+                <li class="lens-target">Analysed stakeholder communication flow across 5+ project activities to improve coordination and information management.</li>
+              </ul>
+            </div>
+
+            <!-- ICF Deputy Director -->
+            <div class="text-xs">
+              <div class="flex justify-between items-baseline font-bold text-slate-900">
+                <span>Deputy Director for Indian Cultural Fest (ICF)</span>
+                <span class="text-[11px] text-slate-600">2023 – 2025</span>
+              </div>
+              <ul class="list-disc list-outside ml-4 mt-1 text-slate-700 space-y-1">
+                <li class="lens-target">Supported a university cultural event involving 250+ participants by coordinating committees, logistics, and programme execution.</li>
+                <li class="lens-target">Led and coordinated 6 EXCO members through task delegation, scheduling, and operational planning to ensure effective event preparation and delivery.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- EDUCATION -->
+          <div class="mb-5 text-xs">
+            <h2 class="text-xs font-black uppercase tracking-wider text-slate-950 border-b border-slate-300 pb-1 mb-2">Education</h2>
+            <div class="flex justify-between items-baseline font-bold text-slate-900">
+              <span>Bachelor of Information Technology (Business Computing)</span>
+              <span class="text-[11px] text-slate-600">Oct 2022 – Expected Nov 2026</span>
+            </div>
+            <div class="text-slate-700">Universiti Malaysia Sabah (UMS), International Campus Labuan</div>
+            <div class="text-slate-500 italic mt-0.5">Relevant coursework in system development and project management.</div>
+
+            <div class="flex justify-between items-baseline font-bold text-slate-900 mt-2">
+              <span>Sijil Tinggi Persekolahan Malaysia (STPM)</span>
+              <span class="text-[11px] text-slate-600">June 2020 – June 2022</span>
+            </div>
+            <div class="text-slate-700">Subjects: Pengajian Am, Perniagaan, Seni, Bahasa Melayu</div>
+          </div>
+
+          <!-- ADDITIONAL INFORMATION (Skills Segment) -->
+          <div class="text-xs">
+            <div class="flex items-center justify-between border-b border-slate-300 pb-1 mb-2">
+              <h2 class="text-xs font-black uppercase tracking-wider text-slate-950">Additional Information</h2>
+              <button onclick="openModal('skillsModal')" class="text-[11px] font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1 group no-print">
+                <span>Deep Skills Stack</span>
+                <i data-lucide="external-link" class="w-3 h-3 transition-transform group-hover:translate-x-0.5"></i>
+              </button>
+            </div>
+            <div class="space-y-1 text-slate-700">
+              <p><strong class="text-slate-900">Technical Skills:</strong> Information Systems Fundamentals, Web Development, Database Concepts, Firebase, Project Management, Communication Analysis</p>
+              <p><strong class="text-slate-900">Languages:</strong> English, Malay, Mandarin, Tamil</p>
+              <p><strong class="text-slate-900">Certifications:</strong> CCNA, Microsoft Office Specialist, Microsoft AI Certified, Cadet Officer (SISPA)</p>
+              <p><strong class="text-slate-900">Activities & Awards:</strong> Maybank Student Ambassador, JAKMAS International Delegation Award</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: BODY SHOWCASE & ALTERNATING CARDS ==================== -->
+    <section id="heroSection" class="pt-6">
+      <div class="mb-6 flex items-center justify-between border-b border-white/10 pb-3">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <i data-lucide="presentation" class="w-6 h-6 text-amber-400"></i>
+            Interactive Body & Professional Roles
+          </h2>
+          <p class="text-xs text-slate-400">As sketched in your UX/UI drawing: Full-body presentation on the left with alternating portfolio cards on the right.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- LEFT: Standing Body Video Player Showcase -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="relative w-full max-w-sm rounded-3xl border-2 border-white/10 bg-slate-900/60 p-3 shadow-2xl backdrop-blur-md overflow-hidden">
+            <div class="flex items-center justify-between px-3 py-2 border-b border-white/10 mb-2">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              </div>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">Live Body Frame</span>
+            </div>
+
+            <!-- Embedded Google Drive Video 2 -->
+            <div class="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-inner">
+              <iframe 
+                src="https://drive.google.com/file/d/1ALc1nOtYWrmHcS33gwf_WdMqBwT_lCsD/preview" 
+                class="w-full h-full border-0" 
+                allow="autoplay"
+                title="Full Body Presentation">
+              </iframe>
+            </div>
+
+            <div class="p-3 text-center">
+              <span class="font-handwriting text-xl text-amber-300">Arunachalam A/L Thillai</span>
+              <p class="text-[11px] text-slate-400">Professional Presentation & Posture</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: 3 Alternating Wireframe Cards (from your sketch) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Card 1: IT Industry Support & Operations -->
+          <div class="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-xl hover:border-teal-500/50 transition">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+              <div>
+                <span class="inline-block rounded-full bg-teal-500/20 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-teal-300 border border-teal-500/30 mb-2">
+                  Card 1 • Banking IT
+                </span>
+                <h3 class="text-base font-bold text-white">ICBC Malaysia IT Operations</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  Performed diagnostic maintenance, system updates, and verified technical specifications for 20+ enterprise hardware units.
+                </p>
+                <button onclick="openModal('workModal')" class="mt-3 text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                  <span>Explore Experience Details</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+              <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[4/3] cursor-pointer" onclick="openLightbox('https://drive.google.com/thumbnail?id=1oVWKsqwCGMY3GZQ8yqmDMVAzQs8PhgZU&sz=w1000', 'IT Support & Hardware Audit (Photo 3)')">
+                <img src="https://drive.google.com/thumbnail?id=1oVWKsqwCGMY3GZQ8yqmDMVAzQs8PhgZU&sz=w1000" alt="ICBC IT Work" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: TAGMA AR & Firebase Project -->
+          <div class="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-xl hover:border-teal-500/50 transition">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+              <div class="order-2 sm:order-1 rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[4/3] cursor-pointer" onclick="openLightbox('https://drive.google.com/thumbnail?id=1XMQoFqwsHvPAPQ21lB7mLY4WZH-jf4yt&sz=w1000', 'TAGMA Universal Tagging System Demo (Photo 4)')">
+                <img src="https://drive.google.com/thumbnail?id=1XMQoFqwsHvPAPQ21lB7mLY4WZH-jf4yt&sz=w1000" alt="TAGMA FYP" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+              </div>
+              <div class="order-1 sm:order-2">
+                <span class="inline-block rounded-full bg-teal-500/20 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-teal-300 border border-teal-500/30 mb-2">
+                  Card 2 • FYP Innovation
+                </span>
+                <h3 class="text-base font-bold text-white">TAGMA: Universal Tagging System</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  Web-based AR tagging architecture featuring 7+ modules: OCR scanner, user auth, Firebase database, and asset tracking.
+                </p>
+                <button onclick="openModal('skillsModal')" class="mt-3 text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                  <span>View TAGMA Architecture</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Campus Leadership & Cultural Fest -->
+          <div class="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-xl hover:border-teal-500/50 transition">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+              <div>
+                <span class="inline-block rounded-full bg-teal-500/20 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-teal-300 border border-teal-500/30 mb-2">
+                  Card 3 • Leadership
+                </span>
+                <h3 class="text-base font-bold text-white">Deputy Director • Indian Cultural Fest</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  Led 6 EXCO teams, handled stage logistics, and directed communications for a massive campus gala with 250+ participants.
+                </p>
+                <button onclick="openModal('kokoModal')" class="mt-3 text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                  <span>View Leadership Profile</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+              <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/40 aspect-[4/3] cursor-pointer" onclick="openLightbox('https://drive.google.com/thumbnail?id=1sxgpC_Tr7g9mDfso_Ea63DARY45aXsWV&sz=w1000', 'University Leadership & Fest Coordination (Photo 5)')">
+                <img src="https://drive.google.com/thumbnail?id=1sxgpC_Tr7g9mDfso_Ea63DARY45aXsWV&sz=w1000" alt="Leadership Activity" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: GREEN TEXTURED TRANSITION BANNER ==================== -->
+    <div class="green-textured-banner w-full rounded-2xl py-4 px-6 text-center shadow-lg border border-emerald-400/30">
+      <div class="flex items-center justify-center gap-3">
+        <i data-lucide="camera" class="w-5 h-5 text-amber-300"></i>
+        <span class="text-sm sm:text-base font-black tracking-widest uppercase text-white font-serif-title">
+          GALLERY & PINBOARD MOMENTS
+        </span>
+        <i data-lucide="pin" class="w-5 h-5 text-amber-300"></i>
+      </div>
+      <p class="text-[11px] text-emerald-100/90 font-medium mt-0.5">Every photo is publicly viewable with full-screen lightbox zoom</p>
+    </div>
+
+    <!-- ==================== SECTION 4: POLAROID PHOTO WALL & YELLOW STICKY NOTES ==================== -->
+    <section id="gallerySection" class="relative pb-12">
+      <!-- Corkboard texture background container -->
+      <div class="relative rounded-3xl p-6 sm:p-10 border-4 border-amber-950/80 bg-gradient-to-b from-[#1c1917] via-[#292524] to-[#1c1917] shadow-2xl">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+          
+          <!-- POLAROID 1: Online Tutoring (Photo 6) -->
+          <div class="polaroid-frame rounded-md bg-white p-3 rotate-[-3deg] text-slate-900 cursor-pointer" onclick="openLightbox('https://drive.google.com/thumbnail?id=1KQA5SkHYafCUM3T5T_6Eepl_fRGGChzy&sz=w1000', 'Computer Science & Mandarin Tutoring Session (Photo 6)')">
+            <div class="relative aspect-square w-full overflow-hidden bg-slate-100 rounded-sm">
+              <img src="https://drive.google.com/thumbnail?id=1KQA5SkHYafCUM3T5T_6Eepl_fRGGChzy&sz=w1000" alt="Teaching & Mentoring" class="w-full h-full object-cover">
+              <div class="absolute top-2 left-2 w-3 h-3 rounded-full bg-amber-400/70 shadow"></div>
+            </div>
+            <div class="pt-3 text-center">
+              <p class="font-handwriting text-xl text-slate-800 leading-none">T. Arunachalam • Tutor</p>
+              <p class="text-[10px] text-slate-500 font-semibold mt-1">Avo Bridge Academy Mentoring</p>
+            </div>
+          </div>
+
+          <!-- STICKY NOTE 1: Teaching Reflection -->
+          <div class="sticky-note rounded-lg bg-amber-200 p-5 text-slate-900 rotate-[2deg] border border-amber-300">
+            <div class="w-3 h-3 rounded-full bg-red-600/80 mx-auto -mt-3 mb-2 shadow"></div>
+            <h4 class="font-handwriting text-2xl font-bold text-amber-950">Teaching Impact</h4>
+            <p class="font-handwriting text-lg text-amber-900 leading-snug mt-1">
+              "Taught 30+ students programming concepts and Mandarin. Breaking complex logic into intuitive steps is my favorite challenge!"
+            </p>
+            <div class="text-right text-[11px] font-bold text-amber-950 mt-3">~ Arun</div>
+          </div>
+
+          <!-- POLAROID 2: Discipline & Fitness (Photo 8) -->
+          <div class="polaroid-frame rounded-md bg-white p-3 rotate-[3deg] text-slate-900 cursor-pointer" onclick="openLightbox('https://drive.google.com/thumbnail?id=1M48jyOl1msdH9lKo0ZETYfHka__XdTy8&sz=w1000', 'Discipline, Health & Focus (Photo 8)')">
+            <div class="relative aspect-square w-full overflow-hidden bg-slate-100 rounded-sm">
+              <img src="https://drive.google.com/thumbnail?id=1M48jyOl1msdH9lKo0ZETYfHka__XdTy8&sz=w1000" alt="Fitness & Health" class="w-full h-full object-cover">
+              <div class="absolute top-2 right-2 w-3 h-3 rounded-full bg-red-500/70 shadow"></div>
+            </div>
+            <div class="pt-3 text-center">
+              <p class="font-handwriting text-xl text-slate-800 leading-none">Health & Discipline</p>
+              <p class="text-[10px] text-slate-500 font-semibold mt-1">Consistency Everyday</p>
+            </div>
+          </div>
+
+          <!-- STICKY NOTE 2: Technical Philosophy -->
+          <div class="sticky-note rounded-lg bg-amber-200 p-5 text-slate-900 rotate-[-2deg] border border-amber-300">
+            <div class="w-3 h-3 rounded-full bg-emerald-600/80 mx-auto -mt-3 mb-2 shadow"></div>
+            <h4 class="font-handwriting text-2xl font-bold text-amber-950">Core Belief</h4>
+            <p class="font-handwriting text-lg text-amber-900 leading-snug mt-1">
+              "Hardware readiness, clean software code, and daily gym discipline are all built on the exact same pillar: consistency."
+            </p>
+            <div class="text-right text-[11px] font-bold text-amber-950 mt-3">~ IT & Code</div>
+          </div>
+
+          <!-- STICKY NOTE 3: Future Outlook -->
+          <div class="sticky-note rounded-lg bg-amber-200 p-5 text-slate-900 rotate-[1deg] border border-amber-300">
+            <div class="w-3 h-3 rounded-full bg-blue-600/80 mx-auto -mt-3 mb-2 shadow"></div>
+            <h4 class="font-handwriting text-2xl font-bold text-amber-950">Graduation 2026</h4>
+            <p class="font-handwriting text-lg text-amber-900 leading-snug mt-1">
+              "Expected completion in Nov 2026 from UMS Labuan. Ready for IT Operations, Systems Engineering, and Software roles."
+            </p>
+            <div class="text-right text-[11px] font-bold text-amber-950 mt-3">~ UMS Business IT</div>
+          </div>
+
+          <!-- POLAROID 3: Behind the Scenes (Photo 9) -->
+          <div class="polaroid-frame rounded-md bg-white p-3 rotate-[-2deg] text-slate-900 cursor-pointer" onclick="openLightbox('https://drive.google.com/thumbnail?id=1xRrz65By4hcVKA3DTDh7aBhHuJXS70rP&sz=w1000', 'Moments & Candid Milestones (Photo 9)')">
+            <div class="relative aspect-square w-full overflow-hidden bg-slate-100 rounded-sm">
+              <img src="https://drive.google.com/thumbnail?id=1xRrz65By4hcVKA3DTDh7aBhHuJXS70rP&sz=w1000" alt="Memories & Milestones" class="w-full h-full object-cover">
+              <div class="absolute top-2 left-2 w-3 h-3 rounded-full bg-amber-500/70 shadow"></div>
+            </div>
+            <div class="pt-3 text-center">
+              <p class="font-handwriting text-xl text-slate-800 leading-none">Behind The Scenes</p>
+              <p class="text-[10px] text-slate-500 font-semibold mt-1">Journey & Progression</p>
+            </div>
+          </div>
+
+          <!-- STICKY NOTE 4: Direct Contacts -->
+          <div class="sticky-note rounded-lg bg-amber-200 p-5 text-slate-900 rotate-[-3deg] border border-amber-300 lg:col-span-2">
+            <div class="w-3 h-3 rounded-full bg-slate-800/80 mx-auto -mt-3 mb-2 shadow"></div>
+            <h4 class="font-handwriting text-2xl font-bold text-amber-950">Let's Connect & Collaborate!</h4>
+            <p class="font-handwriting text-lg text-amber-900 leading-snug mt-1">
+              Email: <strong>tarunachalam422@gmail.com</strong><br>
+              Phone: <strong>016-8427935</strong> | Location: Muar, Johor & KL
+            </p>
+            <div class="mt-3 flex items-center justify-between text-xs font-black text-amber-950 border-t border-amber-300 pt-2">
+              <span>Multilingual: EN • BM • 中文 • தமிழ்</span>
+              <a href="https://www.linkedin.com/in/arunachalam-thillai-24b48b255" target="_blank" class="text-blue-900 underline font-bold">LinkedIn Profile</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-white/10 bg-slate-950 py-8 px-4 text-center text-xs text-slate-500">
+    <p>© 2026 ARUNACHALAM A/L THILLAI. Handcrafted portfolio designed with custom 3D paper motion and public media links.</p>
+  </footer>
+
+  <!-- ==================== LIGHTBOX MODAL ==================== -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-md p-4" onclick="closeLightbox()">
+    <div class="relative max-w-4xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white hover:text-amber-400 p-2 text-sm font-bold flex items-center gap-1">
+        <span>Close (Esc)</span>
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <img id="lightboxImg" src="" alt="Full Resolution" class="max-h-[75vh] w-auto rounded-2xl border-2 border-white/20 shadow-2xl object-contain">
+      <p id="lightboxCaption" class="mt-3 text-sm font-bold text-amber-300 text-center"></p>
+    </div>
+  </div>
+
+  <!-- ==================== WORK EXPERIENCE DETAIL MODAL ==================== -->
+  <div id="workModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4" onclick="closeModal('workModal')">
+    <div class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border border-white/20 bg-slate-900 p-6 sm:p-8 text-white shadow-2xl" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+        <h3 class="text-lg font-bold flex items-center gap-2">
+          <i data-lucide="briefcase" class="w-5 h-5 text-amber-400"></i>
+          Work Experience Deep-Dive
+        </h3>
+        <button onclick="closeModal('workModal')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-4 text-xs text-slate-300">
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <h4 class="font-bold text-sm text-white">IT Department Intern • ICBC Malaysia Berhad</h4>
+          <span class="text-[11px] text-amber-400">March 2026 – August 2026 (Kuala Lumpur)</span>
+          <p class="mt-2 text-slate-300">Managed IT asset audits, verified hardware specifications for 20+ devices, and executed daily maintenance, software updates, and user helpdesk support.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <h4 class="font-bold text-sm text-white">Part Time Computer Science & Language Tutor • Avo Bridge Academy</h4>
+          <span class="text-[11px] text-amber-400">Feb 2026 – Present</span>
+          <p class="mt-2 text-slate-300">Delivered Python and coding logic tutoring to 30 students, while leading Mandarin oral, reading, and listening modules for 25 learners.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <h4 class="font-bold text-sm text-white">Vehicle Maintenance Technician • Car Rental Operations</h4>
+          <span class="text-[11px] text-amber-400">2024 – 2026</span>
+          <p class="mt-2 text-slate-300">Handled fleet readiness, scheduled inspections, and diagnostics for 20+ rental vehicles to minimize downtime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== KO-KURIKULUM MODAL ==================== -->
+  <div id="kokoModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4" onclick="closeModal('kokoModal')">
+    <div class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border border-white/20 bg-slate-900 p-6 sm:p-8 text-white shadow-2xl" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+        <h3 class="text-lg font-bold flex items-center gap-2">
+          <i data-lucide="award" class="w-5 h-5 text-amber-400"></i>
+          Ko-Kurikulum & Leadership Experience
+        </h3>
+        <button onclick="closeModal('kokoModal')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-4 text-xs text-slate-300">
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <h4 class="font-bold text-sm text-white">Deputy Director • Indian Cultural Fest (ICF)</h4>
+          <span class="text-[11px] text-amber-400">2023 – 2025 • Universiti Malaysia Sabah</span>
+          <p class="mt-2 text-slate-300">Led 6 EXCO teams, managed venue logistics, budget scheduling, and coordinated communications across 250+ university participants.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <h4 class="font-bold text-sm text-white">Maybank Student Ambassador</h4>
+          <span class="text-[11px] text-amber-400">Campus Representative</span>
+          <p class="mt-2 text-slate-300">Engaged student communities in financial literacy initiatives and technology workshops.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <h4 class="font-bold text-sm text-white">JAKMAS International Delegation (Indonesia)</h4>
+          <span class="text-[11px] text-amber-400">Award Contributor</span>
+          <p class="mt-2 text-slate-300">Contributed to receiving the Best Program Award representing Universiti Malaysia Sabah.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SKILLS & TAGMA MODAL ==================== -->
+  <div id="skillsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4" onclick="closeModal('skillsModal')">
+    <div class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border border-white/20 bg-slate-900 p-6 sm:p-8 text-white shadow-2xl" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+        <h3 class="text-lg font-bold flex items-center gap-2">
+          <i data-lucide="cpu" class="w-5 h-5 text-amber-400"></i>
+          Technical Architecture & TAGMA
+        </h3>
+        <button onclick="closeModal('skillsModal')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-4 text-xs text-slate-300">
+        <div class="rounded-xl border border-amber-400/30 bg-amber-400/5 p-4">
+          <h4 class="font-bold text-sm text-amber-300">TAGMA: Universal Tagging System (FYP)</h4>
+          <p class="mt-1">A comprehensive personal belongings identification suite with 7 core modules:</p>
+          <ul class="list-disc ml-4 mt-2 space-y-1">
+            <li>AR Camera Tag Identification (MindAR + A-Frame)</li>
+            <li>OCR Visual Text Scanner</li>
+            <li>Realtime Cloud Sync (Firebase Firestore)</li>
+            <li>Usability Tested with 25 Participants</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <h4 class="font-bold text-sm text-white">Core Technical Stack</h4>
+          <p class="mt-2 leading-relaxed">
+            <strong>Languages & Scripting:</strong> Python, JavaScript, HTML5, CSS3, SQL<br>
+            <strong>Databases & Cloud:</strong> Firebase Firestore, MySQL, Google Cloud Platform<br>
+            <strong>Tools & Platforms:</strong> VS Code, Git, GitHub, Power BI, Android Studio
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPT LOGIC ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Visitor Purpose Form Handling
+    const purposeForm = document.getElementById('purposeForm');
+    const purposeModal = document.getElementById('purposeModal');
+    const visitorBadge = document.getElementById('visitorBadge');
+    const visitorText = document.getElementById('visitorText');
+
+    purposeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const visitorType = document.querySelector('input[name="visitorType"]:checked').value;
+      const visitorGoal = document.querySelector('input[name="visitorGoal"]:checked').value;
+      
+      visitorText.textContent = `${visitorType} • ${visitorGoal}`;
+      visitorBadge.classList.remove('hidden');
+      
+      purposeModal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => purposeModal.remove(), 300);
+    });
+
+    // 3D Clipboard Mouse Perspective Tilt
+    const clipboardBoard = document.getElementById('clipboardBoard');
+    window.addEventListener('mousemove', (e) => {
+      if (window.innerWidth < 1024) return;
+      const rect = clipboardBoard.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const mouseX = e.clientX - centerX;
+      const mouseY = e.clientY - centerY;
+      
+      const rotateX = (-mouseY / 45).toFixed(2);
+      const rotateY = (mouseX / 65).toFixed(2);
+      
+      clipboardBoard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Proximity Word Lens Effect
+    function wrapWordsWithLens(element) {
+      if (!element) return;
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+      const textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+      textNodes.forEach(node => {
+        if (!node.nodeValue.trim()) return;
+        const words = node.nodeValue.split(/(\s+)/);
+        const spanFragment = document.createDocumentFragment();
+
+        words.forEach(word => {
+          if (word.trim().length > 0) {
+            const span = document.createElement('span');
+            span.className = 'word-lens';
+            span.textContent = word;
+            spanFragment.appendChild(span);
+          } else {
+            spanFragment.appendChild(document.createTextNode(word));
+          }
+        });
+
+        node.parentNode.replaceChild(spanFragment, node);
+      });
+    }
+
+    // Apply word magnifier to summary & bullet points
+    wrapWordsWithLens(document.getElementById('summaryText'));
+    document.querySelectorAll('.lens-target').forEach(el => wrapWordsWithLens(el));
+
+    // Smooth Navigation
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Modals
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+    }
+
+    // Lightbox
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    function openLightbox(url, caption) {
+      lightboxImg.src = url;
+      lightboxCaption.textContent = caption;
+      lightboxModal.classList.remove('hidden');
+      lightboxModal.classList.add('flex');
+    }
+    function closeLightbox() {
+      lightboxModal.classList.add('hidden');
+      lightboxModal.classList.remove('flex');
+    }
+
+    // Keyboard support for modals
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeModal('workModal');
+        closeModal('kokoModal');
+        closeModal('skillsModal');
+      }
+    });
+
+    // Download Resume PDF Function
+    function downloadResumePDF() {
+      window.print();
+    }
+  </script>
+</body>
+</html>
